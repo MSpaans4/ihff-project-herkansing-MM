@@ -18,12 +18,6 @@ namespace ihff_project.Controllers
             return View();
         }
 
-        public ActionResult Test2()
-        {
-            IEnumerable<AllRestaurantsPageInfo> restaurants = productRepository.GetAllRestaurants();
-            return View(restaurants);
-        }
-
         public ActionResult Events(int dag)
         {
             IEnumerable<AllFilmInfo> filmList;
@@ -91,8 +85,8 @@ namespace ihff_project.Controllers
         
         public ActionResult Cultuur()
         {
-            IEnumerable<Locaties> l = productRepository.GetAllLocaties();
-            return View(l);
+            IEnumerable<Locaties> locatie = productRepository.GetAllLocaties();
+            return View(locatie);
         }
 
         public ActionResult FilmDetail(int product_ID)

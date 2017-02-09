@@ -19,22 +19,10 @@ namespace ihff_project.Repository
                          orderby voorstellingen.Dag ascending, voorstellingen.Start_Tijd ascending
                          select new AllFilmInfo()
                          {
-                             Product_ID = producten.Product_ID,
-                             Film_ID = films.Film_ID,
-                             Locatie_ID = locaties.Locatie_ID,
-                             Locatie_Naam = locaties.Locatie_Naam,
-                             Film_Naam = films.Film_Naam,
-                             Beschrijving_NL = films.Beschrijving_NL,
-                             Beschrijving_EN = films.Beschrijving_EN,
-                             Genre = films.Genre,
-                             Acteurs = films.Acteurs,
-                             IMDb_rating = films.IMDb_rating,
-                             Dag = voorstellingen.Dag,
-                             Start_Tijd = voorstellingen.Start_Tijd,
-                             Eind_Tijd = voorstellingen.Eind_Tijd,
-                             Zaal = voorstellingen.Zaal,
-                             Image_path = films.Image_path,
-                             Prijs = producten.Prijs
+                             locatie = locaties,
+                             product = producten,
+                             film = films,
+                             voorstelling = voorstellingen
 
                          }).ToList();
 
@@ -51,22 +39,10 @@ namespace ihff_project.Repository
                         orderby voorstellingen.Start_Tijd ascending
                         select new AllFilmInfo()
                         {
-                            Product_ID = producten.Product_ID,
-                            Film_ID = films.Film_ID,
-                            Locatie_ID = locaties.Locatie_ID,
-                            Locatie_Naam = locaties.Locatie_Naam,
-                            Film_Naam = films.Film_Naam,
-                            Beschrijving_NL = films.Beschrijving_NL,
-                            Beschrijving_EN = films.Beschrijving_EN,
-                            Genre = films.Genre,
-                            Acteurs = films.Acteurs,
-                            IMDb_rating = films.IMDb_rating,
-                            Dag = voorstellingen.Dag,
-                            Start_Tijd = voorstellingen.Start_Tijd,
-                            Eind_Tijd = voorstellingen.Eind_Tijd,
-                            Zaal = voorstellingen.Zaal,
-                            Image_path = films.Image_path,
-                            Prijs = producten.Prijs
+                            locatie = locaties,
+                            product = producten,
+                            film = films,
+                            voorstelling = voorstellingen
 
                         }).ToList();
 
@@ -83,22 +59,10 @@ namespace ihff_project.Repository
                          where producten.Product_ID == productId
                          select new AllFilmInfo()
                          {
-                             Product_ID = producten.Product_ID,
-                             Film_ID = films.Film_ID,
-                             Locatie_ID = locaties.Locatie_ID,
-                             Locatie_Naam = locaties.Locatie_Naam,
-                             Film_Naam = films.Film_Naam,
-                             Beschrijving_NL = films.Beschrijving_NL,
-                             Beschrijving_EN = films.Beschrijving_EN,
-                             Genre = films.Genre,
-                             Acteurs = films.Acteurs,
-                             IMDb_rating = films.IMDb_rating,
-                             Dag = voorstellingen.Dag,
-                             Start_Tijd = voorstellingen.Start_Tijd,
-                             Eind_Tijd = voorstellingen.Eind_Tijd,
-                             Zaal = voorstellingen.Zaal,
-                             Image_path = films.Image_path,
-                             Prijs = producten.Prijs
+                             locatie = locaties,
+                             product = producten,
+                             film = films,
+                             voorstelling = voorstellingen
 
                          }).FirstOrDefault();
 
@@ -120,22 +84,10 @@ namespace ihff_project.Repository
                          where voorstellingen.Product_ID == productId
                          select new AllFilmInfo()
                          {
-                             Product_ID = producten.Product_ID,
-                             Film_ID = films.Film_ID,
-                             Locatie_ID = locaties.Locatie_ID,
-                             Locatie_Naam = locaties.Locatie_Naam,
-                             Film_Naam = films.Film_Naam,
-                             Beschrijving_NL = films.Beschrijving_NL,
-                             Beschrijving_EN = films.Beschrijving_EN,
-                             Genre = films.Genre,
-                             Acteurs = films.Acteurs,
-                             IMDb_rating = films.IMDb_rating,
-                             Dag = voorstellingen.Dag,
-                             Start_Tijd = voorstellingen.Start_Tijd,
-                             Eind_Tijd = voorstellingen.Eind_Tijd,
-                             Zaal = voorstellingen.Zaal,
-                             Image_path = films.Image_path,
-                             Prijs = producten.Prijs
+                             locatie = locaties,
+                             product = producten,
+                             film = films,
+                             voorstelling = voorstellingen
 
                          }).FirstOrDefault();
 

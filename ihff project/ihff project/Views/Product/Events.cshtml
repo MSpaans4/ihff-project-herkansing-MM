@@ -29,29 +29,29 @@
                         <div class="col-md-12">
                             <h4>
                                 <label>
-                                    @Html.ActionLink(f.Film_Naam, "FilmDetail", "Product", new { f.Product_ID }, null) -
-                                @if (f.Prijs == 0)
+                                    @Html.ActionLink(f.film.Film_Naam, "FilmDetail", "Product", new { f.product.Product_ID }, null) -
+                                @if (f.product.Prijs == 0)
                                 {
                                     @:Free
                         }
                                 else
                                 {
-                                    @: €@string.Format("{0:0.00}", f.Prijs)
+                                    @: €@string.Format("{0:0.00}", f.product.Prijs)
                         }
                             </label>
                         </h4>
                         <p>
-                            <img src="@f.Image_path" alt="Movie image" height="250" />
-                            [@string.Format("{0:hh\\:mm}", f.Start_Tijd) until @string.Format("{0:hh\\:mm}", f.Eind_Tijd)] in @f.Locatie_Naam - @f.Zaal <br \>
+                            <img src="@f.film.Image_path" alt="Movie image" height="250" />
+                            [@string.Format("{0:hh\\:mm}", f.voorstelling.Start_Tijd) until @string.Format("{0:hh\\:mm}", f.voorstelling.Eind_Tijd)] in @f.locatie.Locatie_Naam - @f.voorstelling.Zaal <br \>
                         </p>
-                        @if (f.IMDb_rating != null)
+                        @if (f.film.IMDb_rating != null)
                         {
-                            @:IMDb rating: @f.IMDb_rating<br \>
+                            @:IMDb rating: @f.film.IMDb_rating<br \>
                         }
-                        @f.Beschrijving_EN
+                        @f.film.Beschrijving_EN
                         <div class="EventBuyButtonGroup">
-                            <button class="btn btn-default AddToShoppingCart" id="pr-@f.Product_ID">Buy now</button>
-                            <button class="btn btn-default AddToProgramme" id="pr-@f.Product_ID">Add to programme</button>
+                            <button class="btn btn-default AddToShoppingCart" id="pr-@f.product.Product_ID">Buy now</button>
+                            <button class="btn btn-default AddToProgramme" id="pr-@f.product.Product_ID">Add to programme</button>
                         </div>
                     </div>
                     <hr />
