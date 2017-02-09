@@ -97,8 +97,8 @@ namespace ihff_project.Controllers
 
         public ActionResult FilmDetail(int product_ID)
         {
-            IEnumerable<AllFilmInfo> film = productRepository.GetVoorstellingen(product_ID);
-            return View(film.First<AllFilmInfo>());
+            AllFilmInfo film = productRepository.GetVoorstellingen(product_ID);
+            return View(film);
         }
 
         public ActionResult RestaurantDetail()

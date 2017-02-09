@@ -18,7 +18,24 @@ namespace ihff_project.Repository
                          join locaties in ctx.Locaties on producten.Locatie_ID equals locaties.Locatie_ID
                          orderby voorstellingen.Dag ascending, voorstellingen.Start_Tijd ascending
                          select new AllFilmInfo()
-                         {                          
+                         {
+                             Product_ID = producten.Product_ID,
+                             Film_ID = films.Film_ID,
+                             Locatie_ID = locaties.Locatie_ID,
+                             Locatie_Naam = locaties.Locatie_Naam,
+                             Film_Naam = films.Film_Naam,
+                             Beschrijving_NL = films.Beschrijving_NL,
+                             Beschrijving_EN = films.Beschrijving_EN,
+                             Genre = films.Genre,
+                             Acteurs = films.Acteurs,
+                             IMDb_rating = films.IMDb_rating,
+                             Dag = voorstellingen.Dag,
+                             Start_Tijd = voorstellingen.Start_Tijd,
+                             Eind_Tijd = voorstellingen.Eind_Tijd,
+                             Zaal = voorstellingen.Zaal,
+                             Image_path = films.Image_path,
+                             Prijs = producten.Prijs
+
                          }).ToList();
 
             return query;
@@ -34,7 +51,22 @@ namespace ihff_project.Repository
                         orderby voorstellingen.Start_Tijd ascending
                         select new AllFilmInfo()
                         {
-                            
+                            Product_ID = producten.Product_ID,
+                            Film_ID = films.Film_ID,
+                            Locatie_ID = locaties.Locatie_ID,
+                            Locatie_Naam = locaties.Locatie_Naam,
+                            Film_Naam = films.Film_Naam,
+                            Beschrijving_NL = films.Beschrijving_NL,
+                            Beschrijving_EN = films.Beschrijving_EN,
+                            Genre = films.Genre,
+                            Acteurs = films.Acteurs,
+                            IMDb_rating = films.IMDb_rating,
+                            Dag = voorstellingen.Dag,
+                            Start_Tijd = voorstellingen.Start_Tijd,
+                            Eind_Tijd = voorstellingen.Eind_Tijd,
+                            Zaal = voorstellingen.Zaal,
+                            Image_path = films.Image_path,
+                            Prijs = producten.Prijs
 
                         }).ToList();
 
@@ -51,7 +83,22 @@ namespace ihff_project.Repository
                          where producten.Product_ID == productId
                          select new AllFilmInfo()
                          {
-                             
+                             Product_ID = producten.Product_ID,
+                             Film_ID = films.Film_ID,
+                             Locatie_ID = locaties.Locatie_ID,
+                             Locatie_Naam = locaties.Locatie_Naam,
+                             Film_Naam = films.Film_Naam,
+                             Beschrijving_NL = films.Beschrijving_NL,
+                             Beschrijving_EN = films.Beschrijving_EN,
+                             Genre = films.Genre,
+                             Acteurs = films.Acteurs,
+                             IMDb_rating = films.IMDb_rating,
+                             Dag = voorstellingen.Dag,
+                             Start_Tijd = voorstellingen.Start_Tijd,
+                             Eind_Tijd = voorstellingen.Eind_Tijd,
+                             Zaal = voorstellingen.Zaal,
+                             Image_path = films.Image_path,
+                             Prijs = producten.Prijs
 
                          }).FirstOrDefault();
 
@@ -64,7 +111,7 @@ namespace ihff_project.Repository
             return allVoorstellingen;
         }
 
-        public IEnumerable<AllFilmInfo> GetVoorstellingen(int productId)
+        public AllFilmInfo GetVoorstellingen(int productId)
         {
             var query = (from producten in ctx.Producten
                          join voorstellingen in ctx.Voorstellingen on producten.Product_ID equals voorstellingen.Product_ID
@@ -73,9 +120,24 @@ namespace ihff_project.Repository
                          where voorstellingen.Product_ID == productId
                          select new AllFilmInfo()
                          {
-                             
+                             Product_ID = producten.Product_ID,
+                             Film_ID = films.Film_ID,
+                             Locatie_ID = locaties.Locatie_ID,
+                             Locatie_Naam = locaties.Locatie_Naam,
+                             Film_Naam = films.Film_Naam,
+                             Beschrijving_NL = films.Beschrijving_NL,
+                             Beschrijving_EN = films.Beschrijving_EN,
+                             Genre = films.Genre,
+                             Acteurs = films.Acteurs,
+                             IMDb_rating = films.IMDb_rating,
+                             Dag = voorstellingen.Dag,
+                             Start_Tijd = voorstellingen.Start_Tijd,
+                             Eind_Tijd = voorstellingen.Eind_Tijd,
+                             Zaal = voorstellingen.Zaal,
+                             Image_path = films.Image_path,
+                             Prijs = producten.Prijs
 
-                         }).ToList();
+                         }).FirstOrDefault();
 
             return query;
         }
