@@ -1,0 +1,204 @@
+﻿@using ihff_project.Models;
+@model IEnumerable<AllFilmInfo>
+
+@{
+    ViewBag.Title = "Events";
+}
+
+<h2>Events</h2>
+<div class="row">
+    <div class="col-md-9">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>
+                        @Html.ActionLink("All", "Events", "Product", new { dag = 0 }, null)
+                        @Html.ActionLink("Wednesday", "Events", "Product", new { dag = 3 }, null)
+                        @Html.ActionLink("Thursday", "Events", "Product", new { dag = 4 }, null)
+                        @Html.ActionLink("Friday", "Events", "Product", new { dag = 5 }, null)
+                        @Html.ActionLink("Saterday", "Events", "Product", new { dag = 6 }, null)
+                        @Html.ActionLink("Sunday", "Events", "Product", new { dag = 7 }, null)
+                    </h3>
+
+                    <hr />
+                    <h3>All events on @ViewBag.Dag</h3><br \>
+                </div>
+                    @foreach (AllFilmInfo f in Model)
+                    {
+                        AllFilmInfo film = f;
+                        <div class="col-md-12">
+                            <h4>
+                                <label>
+                                    @Html.ActionLink(f.Film_Naam, "FilmDetail", "Product", new { f.Product_ID }, null) -
+                                @if (f.Prijs == 0)
+                                {
+                                    @:Free
+                        }
+                                else
+                                {
+                                    @: €@string.Format("{0:0.00}", f.Prijs)
+                        }
+                            </label>
+                        </h4>
+                        <p>
+                            <img src="@f.Image_path" alt="Movie image" height="250" />
+                            [@string.Format("{0:hh\\:mm}", f.Start_Tijd) until @string.Format("{0:hh\\:mm}", f.Eind_Tijd)] in @f.Locatie_Naam - @f.Zaal <br \>
+                        </p>
+                        @if (f.IMDb_rating != null)
+                        {
+                            @:IMDb rating: @f.IMDb_rating<br \>
+                        }
+                        @f.Beschrijving_EN
+                        <div class="EventBuyButtonGroup">
+                            <button class="btn btn-default AddToShoppingCart" id="pr-@f.Product_ID">Buy now</button>
+                            <button class="btn btn-default AddToProgramme" id="pr-@f.Product_ID">Add to programme</button>
+                        </div>
+                    </div>
+                    <hr />
+                    }
+
+                </div>
+        </div>
+
+    </div>
+    <div class="col-md-3">
+        <h3>Personal Programme</h3>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="PersonalProgrammeBox" style="border-radius: 10px; border: 1px dashed black; height: 300px; position: fixed; width: 14%;">
+                        <div class="PersonalProgrammeBox-Content" id="PersonalProgrammaContent" style="height:250px">
+                            @Html.Partial("~/Views/Product/_PersonalProgramme.cshtml")
+                        </div>
+
+                        <button type="button" class="btn btn-danger btn-lg btn-block AddToCart" style="background-color: #c48416 !important;">Add programme to cart</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function () {
+    refreshFunc();
+    jQuery(".AddToProgramme").click(function (e) {
+        var day = '';
+        var strRestId = "" + (e.target.id);
+        var serviceURL = '/Product/AddToProgramme';
+
+        jQuery.ajax({
+            type: "POST",
+            url: serviceURL,
+            dataType: "json",
+
+            data: {idstr:strRestId},
+            success: function (data) {
+                refreshFunc();
+            },
+            error: errorFunc
+        });
+
+
+        function errorFunc() {
+            alert('An error has occurred while proccessing your request. Please try again later or contact the site admin.');
+        }
+
+    });
+    jQuery(".AddToShoppingCart").click(function (e) {
+        var strRestId = "" + (e.target.id);
+        var serviceURL = '/Product/AddEventToCart';
+
+        jQuery.ajax({
+            type: "POST",
+            url: serviceURL,
+            dataType: "json",
+
+            data: { idstr: strRestId },
+            success: function (data) {
+                // refreshFunc();
+                location.href = '@Url.Action("ShoppingCart","Product")';
+            },
+            error: errorFunc
+        });
+
+
+        function errorFunc() {
+            alert('An error has occurred while proccessing your request. Please try again later or contact the site admin.');
+        }
+
+    });
+
+    jQuery(".AddToCart").click(function (e) {
+        var serviceURL = '@Url.Action("AddToCart","Product")'
+        jQuery.ajax({
+            type: "GET",
+            url: serviceURL,
+            contentType: 'application/json',
+
+            success: function (data) {
+                refreshFunc();
+                location.href = '@Url.Action("ShoppingCart","Product")';
+            },
+            error: errorFunc
+        });
+
+
+        function errorFunc() {
+            alert('An error has occurred while proccessing your request. Please try again later or contact the site admin.');
+        }
+
+    });
+});
+
+function refreshFunc() {
+    var serviceURL = '@Url.Action("RefreshPersonalProgramme", "Product")';
+
+    jQuery.ajax({
+        type: "GET",
+        url: serviceURL,
+        contentType: 'application/json',
+        success: function (data) {
+            jQuery(".PersonalProgrammeBox-Content").html(data)
+
+        },
+        error: function (data) {
+
+            alert("An error has occurred while proccessing your request. Please try again later or contact the site admin.");
+        }
+    });
+
+
+}
+    jQuery("body").on('click', '.DeleteProductBtn', function (e) {
+        var strRestId = (e.target.id);
+
+        var serviceURL = '@Url.Action("RemoveFromProgramme", "Product")';
+
+        jQuery.ajax({
+            type: "POST",
+            url: serviceURL,
+            dataType: "json",
+
+            data: { productId: strRestId },
+            success: function (data) {
+                refreshFunc();
+
+            },
+            error: errorFunc
+        });
+
+
+        function errorFunc() {
+            alert('An error has occurred while proccessing your request. Please try again later or contact the site admin.');
+        }
+    });
+
+
+</script>
+
+

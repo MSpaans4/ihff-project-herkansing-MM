@@ -1,0 +1,93 @@
+﻿@using ihff_project.Models;
+
+
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+
+<h2>Shopping Cart</h2>
+
+<h3>Woensdag</h3>
+<div id="day-1"></div>
+<hr />
+<h3>Donderdag</h3>
+<div id="day-2"></div>
+<hr />
+<h3>Vrijdag</h3>
+<div id="day-3"></div>
+<hr />
+<h3>Zaterdag</h3>
+<div id="day-4"></div>
+<hr />
+<h3>Zondag</h3>
+<div id="day-5"></div>
+<hr />
+<h3>Totaal:</h3>
+
+<a href="@Url.Action("Payment","Product")"><button>Pay now</button></a>
+
+
+
+@{
+    var products = Session["products"] as List<SessionBesteldeItem>;
+
+
+    if (products != null)
+    {
+
+        foreach (var product in products)
+        {
+            if (product.PersonalProgrammeOrShoppingCart == 2)
+            {
+                if (product.SoortProduct == 1)
+                {
+                <h4 class="day-@product.Zaal13_Codes">@product.Film.Film_Naam + @product.Film.Prijs <button type="button" class="btn btn-default btn-xs pull-right DeleteProductBtn" id="prod-@product.Product">
+    X
+</button></h4>
+                }
+                if (product.SoortProduct == 2)
+                {
+                <h4 class="day-@product.Zaal13_Codes">@product.Restaurant.Naam + @product.Restaurant.Prijs <button type="button" class="btn btn-default btn-xs pull-right DeleteProductBtn" id="prod-@product.Product">
+    X
+</button></h4>
+                    }
+                }
+            }
+        }
+    }
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery(".day-1").appendTo("#day-1");
+        jQuery(".day-2").appendTo("#day-2");
+        jQuery(".day-3").appendTo("#day-3");
+        jQuery(".day-4").appendTo("#day-4");
+        jQuery(".day-5").appendTo("#day-5");
+    });
+
+    jQuery("body").on('click', '.DeleteProductBtn', function (e) {
+        var strRestId = (e.target.id);
+
+        var serviceURL = '@Url.Action("RemoveFromProgramme", "Product")';
+
+        jQuery.ajax({
+            type: "POST",
+            url: serviceURL,
+            dataType: "json",
+
+            data: { productId: strRestId },
+            success: function (data) {
+                location.href = '@Url.Action("ShoppingCart","Product")';
+
+            },
+            error: errorFunc
+        });
+
+
+        function errorFunc() {
+            alert('An error has occurred while proccessing your request. Please try again later or contact the site admin.');
+        }
+    });
+</script>

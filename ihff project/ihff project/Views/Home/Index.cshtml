@@ -1,0 +1,58 @@
+﻿@using ihff_project.Models;
+@model IEnumerable<Producten>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+@Styles.Render("~/Content/css")
+
+<script type="text/javascript">
+
+    $(document).ready(function()
+    {
+        $("#slideshow > div:gt(0)").hide();
+        setInterval(function()
+        {
+            $('#SlideshowImages > div:first').fadeOut(0).next().fadeIn(0).end().appendTo('#SlideshowImages');        
+        }, 5000);
+    });
+</script>
+
+<div class="jumbotron">
+    <div id="SlideshowImages">        
+        @foreach (Producten p in Model)
+        {
+            <div> <img src="@p.Image_Path" width="1140" height="400"> </div>
+        }
+    </div> 
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Events</h2>
+        <p>Great movies and inspiring specials</p>
+        <p>@Html.ActionLink("See all available activities", "Events", "Product", new { dag = 0 }, new { @class = "btn btn-default" })</p>
+        <h2>Food</h2>
+        <p>Delicious food in exquisite restaurants</p>
+        <p>@Html.ActionLink("See all available restaurants", "Restaurants", "Product", null, new { @class = "btn btn-default" })</p>
+        <h2>Culture</h2>
+        <p>Experience the rich culture of the city</p>
+        <p>@Html.ActionLink("Points of interest in Haarlem", "Events", "Product", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Film&Food Tickets</h2>
+        <p>The perfect combination of a movie and a culinary experience. Enjoyment a it's finest.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Order Film&Food Ticket &raquo;</a></p>
+        <h2>Day Tickets</h2>
+        <p>Go to two movies and an iHff special on a single day for one great price.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Order Day Ticket &raquo;</a></p>
+        <h2>Film&Food Tickets</h2>
+        <p>Make your own movie programme. You can put together the movies you want to see during the entire festival. Order tickets for two or more movies to get a 5% discount!</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Create Personal Programme &raquo;</a></p>
+    </div>
+</div>
+
+

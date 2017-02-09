@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3d8c8e639462459393dd5ca8bf15de45" Name="Diagram1">
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.BesteldeItems" Width="1.5" PointX="5.25" PointY="7.75" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Bestellingen" Width="1.5" PointX="3" PointY="11.875" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Cultuur" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Films" Width="1.5" PointX="6" PointY="3.625" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Klanten" Width="1.5" PointX="0.75" PointY="12" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Locaties" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Medewerker" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Producten" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Restaurants" Width="1.5" PointX="5.25" PointY="14.25" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Voorstellingen" Width="1.5" PointX="8.25" PointY="7.625" />
+        <AssociationConnector Association="iHFF1617S_B3Model.FK__BesteldeI__Beste__43D61337" />
+        <AssociationConnector Association="iHFF1617S_B3Model.FK__BesteldeI__Produ__44CA3770" />
+        <AssociationConnector Association="iHFF1617S_B3Model.FK__Bestellin__Klant__489AC854" />
+        <AssociationConnector Association="iHFF1617S_B3Model.FK__Cultuur__Locatie__5BAD9CC8" />
+        <AssociationConnector Association="iHFF1617S_B3Model.FK__Voorstell__Film___4C6B5938" />
+        <AssociationConnector Association="iHFF1617S_B3Model.FK__Producten__Locat__4A8310C6" />
+        <AssociationConnector Association="iHFF1617S_B3Model.FK__Restauran__Resta__6166761E" />
+        <AssociationConnector Association="iHFF1617S_B3Model.FK__Voorstell__Produ__4D5F7D71" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

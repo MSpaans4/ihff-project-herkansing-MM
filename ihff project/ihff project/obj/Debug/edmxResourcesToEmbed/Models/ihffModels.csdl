@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="iHFF1617S_B3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="iHFF1617S_B3" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="MaakMedewerker">
+      <Parameter Name="pID" Mode="In" Type="Int32" />
+      <Parameter Name="pWachtwoord" Mode="In" Type="String" />
+      <Parameter Name="pNaam" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(iHFF1617S_B3Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(iHFF1617S_B3Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="BesteldeItems" EntityType="iHFF1617S_B3Model.BesteldeItems" />
+    <EntitySet Name="Bestellingen" EntityType="iHFF1617S_B3Model.Bestellingen" />
+    <EntitySet Name="Cultuur" EntityType="iHFF1617S_B3Model.Cultuur" />
+    <EntitySet Name="Films" EntityType="iHFF1617S_B3Model.Films" />
+    <EntitySet Name="Klanten" EntityType="iHFF1617S_B3Model.Klanten" />
+    <EntitySet Name="Locaties" EntityType="iHFF1617S_B3Model.Locaties" />
+    <EntitySet Name="Medewerker" EntityType="iHFF1617S_B3Model.Medewerker" />
+    <EntitySet Name="Producten" EntityType="iHFF1617S_B3Model.Producten" />
+    <EntitySet Name="Restaurants" EntityType="iHFF1617S_B3Model.Restaurants" />
+    <EntitySet Name="sysdiagrams" EntityType="iHFF1617S_B3Model.sysdiagrams" />
+    <EntitySet Name="Voorstellingen" EntityType="iHFF1617S_B3Model.Voorstellingen" />
+    <AssociationSet Name="FK__BesteldeI__Beste__43D61337" Association="iHFF1617S_B3Model.FK__BesteldeI__Beste__43D61337">
+      <End Role="Bestellingen" EntitySet="Bestellingen" />
+      <End Role="BesteldeItems" EntitySet="BesteldeItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BesteldeI__Produ__44CA3770" Association="iHFF1617S_B3Model.FK__BesteldeI__Produ__44CA3770">
+      <End Role="Producten" EntitySet="Producten" />
+      <End Role="BesteldeItems" EntitySet="BesteldeItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bestellin__Klant__45BE5BA9" Association="iHFF1617S_B3Model.FK__Bestellin__Klant__45BE5BA9">
+      <End Role="Klanten" EntitySet="Klanten" />
+      <End Role="Bestellingen" EntitySet="Bestellingen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bestellin__Klant__46B27FE2" Association="iHFF1617S_B3Model.FK__Bestellin__Klant__46B27FE2">
+      <End Role="Klanten" EntitySet="Klanten" />
+      <End Role="Bestellingen" EntitySet="Bestellingen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bestellin__Klant__47A6A41B" Association="iHFF1617S_B3Model.FK__Bestellin__Klant__47A6A41B">
+      <End Role="Klanten" EntitySet="Klanten" />
+      <End Role="Bestellingen" EntitySet="Bestellingen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bestellin__Klant__489AC854" Association="iHFF1617S_B3Model.FK__Bestellin__Klant__489AC854">
+      <End Role="Klanten" EntitySet="Klanten" />
+      <End Role="Bestellingen" EntitySet="Bestellingen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cultuur__Locatie__498EEC8D" Association="iHFF1617S_B3Model.FK__Cultuur__Locatie__498EEC8D">
+      <End Role="Locaties" EntitySet="Locaties" />
+      <End Role="Cultuur" EntitySet="Cultuur" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Voorstell__Film___4C6B5938" Association="iHFF1617S_B3Model.FK__Voorstell__Film___4C6B5938">
+      <End Role="Films" EntitySet="Films" />
+      <End Role="Voorstellingen" EntitySet="Voorstellingen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Producten__Locat__4A8310C6" Association="iHFF1617S_B3Model.FK__Producten__Locat__4A8310C6">
+      <End Role="Locaties" EntitySet="Locaties" />
+      <End Role="Producten" EntitySet="Producten" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Restauran__Resta__4B7734FF" Association="iHFF1617S_B3Model.FK__Restauran__Resta__4B7734FF">
+      <End Role="Producten" EntitySet="Producten" />
+      <End Role="Restaurants" EntitySet="Restaurants" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Voorstell__Produ__4D5F7D71" Association="iHFF1617S_B3Model.FK__Voorstell__Produ__4D5F7D71">
+      <End Role="Producten" EntitySet="Producten" />
+      <End Role="Voorstellingen" EntitySet="Voorstellingen" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="BesteldeItems">
+    <Key>
+      <PropertyRef Name="Bestelling_ID" />
+      <PropertyRef Name="Product" />
+    </Key>
+    <Property Name="Bestelling_ID" Type="Int32" Nullable="false" />
+    <Property Name="Product" Type="Int32" Nullable="false" />
+    <Property Name="Aantal" Type="Int32" />
+    <Property Name="Prijs" Type="Double" />
+    <NavigationProperty Name="Bestellingen" Relationship="iHFF1617S_B3Model.FK__BesteldeI__Beste__43D61337" FromRole="BesteldeItems" ToRole="Bestellingen" />
+    <NavigationProperty Name="Producten" Relationship="iHFF1617S_B3Model.FK__BesteldeI__Produ__44CA3770" FromRole="BesteldeItems" ToRole="Producten" />
+  </EntityType>
+  <EntityType Name="Bestellingen">
+    <Key>
+      <PropertyRef Name="Bestelling_ID" />
+    </Key>
+    <Property Name="Bestelling_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Klant_ID" Type="Int32" />
+    <Property Name="Datum" Type="DateTime" Precision="3" />
+    <Property Name="Prijs" Type="Double" />
+    <NavigationProperty Name="BesteldeItems" Relationship="iHFF1617S_B3Model.FK__BesteldeI__Beste__43D61337" FromRole="Bestellingen" ToRole="BesteldeItems" />
+    <NavigationProperty Name="Klanten" Relationship="iHFF1617S_B3Model.FK__Bestellin__Klant__45BE5BA9" FromRole="Bestellingen" ToRole="Klanten" />
+    <NavigationProperty Name="Klanten1" Relationship="iHFF1617S_B3Model.FK__Bestellin__Klant__46B27FE2" FromRole="Bestellingen" ToRole="Klanten" />
+    <NavigationProperty Name="Klanten2" Relationship="iHFF1617S_B3Model.FK__Bestellin__Klant__47A6A41B" FromRole="Bestellingen" ToRole="Klanten" />
+    <NavigationProperty Name="Klanten3" Relationship="iHFF1617S_B3Model.FK__Bestellin__Klant__489AC854" FromRole="Bestellingen" ToRole="Klanten" />
+  </EntityType>
+  <EntityType Name="Cultuur">
+    <Key>
+      <PropertyRef Name="Event_ID" />
+    </Key>
+    <Property Name="Event_ID" Type="Int32" Nullable="false" />
+    <Property Name="Naam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Locatie" Type="Int32" />
+    <NavigationProperty Name="Locaties" Relationship="iHFF1617S_B3Model.FK__Cultuur__Locatie__498EEC8D" FromRole="Cultuur" ToRole="Locaties" />
+  </EntityType>
+  <EntityType Name="Films">
+    <Key>
+      <PropertyRef Name="Film_ID" />
+    </Key>
+    <Property Name="Film_ID" Type="Int32" Nullable="false" />
+    <Property Name="Genre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Beschrijving" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IMDb_rating" Type="Double" />
+    <Property Name="Image_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Acteurs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Voorstellingen" Relationship="iHFF1617S_B3Model.FK__Voorstell__Film___4C6B5938" FromRole="Films" ToRole="Voorstellingen" />
+  </EntityType>
+  <EntityType Name="Klanten">
+    <Key>
+      <PropertyRef Name="Klant_ID" />
+    </Key>
+    <Property Name="Klant_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emailadres" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bestellingen" Relationship="iHFF1617S_B3Model.FK__Bestellin__Klant__45BE5BA9" FromRole="Klanten" ToRole="Bestellingen" />
+    <NavigationProperty Name="Bestellingen1" Relationship="iHFF1617S_B3Model.FK__Bestellin__Klant__46B27FE2" FromRole="Klanten" ToRole="Bestellingen" />
+    <NavigationProperty Name="Bestellingen2" Relationship="iHFF1617S_B3Model.FK__Bestellin__Klant__47A6A41B" FromRole="Klanten" ToRole="Bestellingen" />
+    <NavigationProperty Name="Bestellingen3" Relationship="iHFF1617S_B3Model.FK__Bestellin__Klant__489AC854" FromRole="Klanten" ToRole="Bestellingen" />
+  </EntityType>
+  <EntityType Name="Locaties">
+    <Key>
+      <PropertyRef Name="Locatie_ID" />
+    </Key>
+    <Property Name="Locatie_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Plaats" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Straatnaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Huisnummer" Type="Int32" />
+    <Property Name="Toevoeging" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Postcode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cultuur" Relationship="iHFF1617S_B3Model.FK__Cultuur__Locatie__498EEC8D" FromRole="Locaties" ToRole="Cultuur" />
+    <NavigationProperty Name="Producten" Relationship="iHFF1617S_B3Model.FK__Producten__Locat__4A8310C6" FromRole="Locaties" ToRole="Producten" />
+  </EntityType>
+  <EntityType Name="Medewerker">
+    <Key>
+      <PropertyRef Name="Medewerker_ID" />
+    </Key>
+    <Property Name="Medewerker_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PasswordHash" Type="Binary" MaxLength="64" FixedLength="true" />
+    <Property Name="Salt" Type="Guid" />
+  </EntityType>
+  <EntityType Name="Producten">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Prijs" Type="Double" />
+    <Property Name="Highlight" Type="Boolean" />
+    <Property Name="Highlight_text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image_Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Locatie_ID" Type="Int32" />
+    <NavigationProperty Name="BesteldeItems" Relationship="iHFF1617S_B3Model.FK__BesteldeI__Produ__44CA3770" FromRole="Producten" ToRole="BesteldeItems" />
+    <NavigationProperty Name="Locaties" Relationship="iHFF1617S_B3Model.FK__Producten__Locat__4A8310C6" FromRole="Producten" ToRole="Locaties" />
+    <NavigationProperty Name="Restaurants" Relationship="iHFF1617S_B3Model.FK__Restauran__Resta__4B7734FF" FromRole="Producten" ToRole="Restaurants" />
+    <NavigationProperty Name="Voorstellingen" Relationship="iHFF1617S_B3Model.FK__Voorstell__Produ__4D5F7D71" FromRole="Producten" ToRole="Voorstellingen" />
+  </EntityType>
+  <EntityType Name="Restaurants">
+    <Key>
+      <PropertyRef Name="Restaurant_ID" />
+    </Key>
+    <Property Name="Restaurant_ID" Type="Int32" Nullable="false" />
+    <Property Name="Soort_Keuken" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Openingstijd" Type="Time" Precision="7" />
+    <Property Name="Slutingstijd" Type="Time" Precision="7" />
+    <Property Name="Emailadres" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Producten" Relationship="iHFF1617S_B3Model.FK__Restauran__Resta__4B7734FF" FromRole="Restaurants" ToRole="Producten" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Voorstellingen">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="Int32" Nullable="false" />
+    <Property Name="Film_ID" Type="Int32" />
+    <Property Name="Dag" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Tijd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Plaatsen_Over" Type="Int32" />
+    <Property Name="Zaal" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Films" Relationship="iHFF1617S_B3Model.FK__Voorstell__Film___4C6B5938" FromRole="Voorstellingen" ToRole="Films" />
+    <NavigationProperty Name="Producten" Relationship="iHFF1617S_B3Model.FK__Voorstell__Produ__4D5F7D71" FromRole="Voorstellingen" ToRole="Producten" />
+  </EntityType>
+  <Association Name="FK__BesteldeI__Beste__43D61337">
+    <End Type="iHFF1617S_B3Model.Bestellingen" Role="Bestellingen" Multiplicity="1" />
+    <End Type="iHFF1617S_B3Model.BesteldeItems" Role="BesteldeItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bestellingen">
+        <PropertyRef Name="Bestelling_ID" />
+      </Principal>
+      <Dependent Role="BesteldeItems">
+        <PropertyRef Name="Bestelling_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BesteldeI__Produ__44CA3770">
+    <End Type="iHFF1617S_B3Model.Producten" Role="Producten" Multiplicity="1" />
+    <End Type="iHFF1617S_B3Model.BesteldeItems" Role="BesteldeItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producten">
+        <PropertyRef Name="Product_ID" />
+      </Principal>
+      <Dependent Role="BesteldeItems">
+        <PropertyRef Name="Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bestellin__Klant__45BE5BA9">
+    <End Type="iHFF1617S_B3Model.Klanten" Role="Klanten" Multiplicity="0..1" />
+    <End Type="iHFF1617S_B3Model.Bestellingen" Role="Bestellingen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klanten">
+        <PropertyRef Name="Klant_ID" />
+      </Principal>
+      <Dependent Role="Bestellingen">
+        <PropertyRef Name="Klant_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bestellin__Klant__46B27FE2">
+    <End Type="iHFF1617S_B3Model.Klanten" Role="Klanten" Multiplicity="0..1" />
+    <End Type="iHFF1617S_B3Model.Bestellingen" Role="Bestellingen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klanten">
+        <PropertyRef Name="Klant_ID" />
+      </Principal>
+      <Dependent Role="Bestellingen">
+        <PropertyRef Name="Klant_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bestellin__Klant__47A6A41B">
+    <End Type="iHFF1617S_B3Model.Klanten" Role="Klanten" Multiplicity="0..1" />
+    <End Type="iHFF1617S_B3Model.Bestellingen" Role="Bestellingen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klanten">
+        <PropertyRef Name="Klant_ID" />
+      </Principal>
+      <Dependent Role="Bestellingen">
+        <PropertyRef Name="Klant_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bestellin__Klant__489AC854">
+    <End Type="iHFF1617S_B3Model.Klanten" Role="Klanten" Multiplicity="0..1" />
+    <End Type="iHFF1617S_B3Model.Bestellingen" Role="Bestellingen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klanten">
+        <PropertyRef Name="Klant_ID" />
+      </Principal>
+      <Dependent Role="Bestellingen">
+        <PropertyRef Name="Klant_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cultuur__Locatie__498EEC8D">
+    <End Type="iHFF1617S_B3Model.Locaties" Role="Locaties" Multiplicity="0..1" />
+    <End Type="iHFF1617S_B3Model.Cultuur" Role="Cultuur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locaties">
+        <PropertyRef Name="Locatie_ID" />
+      </Principal>
+      <Dependent Role="Cultuur">
+        <PropertyRef Name="Locatie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Voorstell__Film___4C6B5938">
+    <End Type="iHFF1617S_B3Model.Films" Role="Films" Multiplicity="0..1" />
+    <End Type="iHFF1617S_B3Model.Voorstellingen" Role="Voorstellingen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Films">
+        <PropertyRef Name="Film_ID" />
+      </Principal>
+      <Dependent Role="Voorstellingen">
+        <PropertyRef Name="Film_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Producten__Locat__4A8310C6">
+    <End Type="iHFF1617S_B3Model.Locaties" Role="Locaties" Multiplicity="0..1" />
+    <End Type="iHFF1617S_B3Model.Producten" Role="Producten" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locaties">
+        <PropertyRef Name="Locatie_ID" />
+      </Principal>
+      <Dependent Role="Producten">
+        <PropertyRef Name="Locatie_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Restauran__Resta__4B7734FF">
+    <End Type="iHFF1617S_B3Model.Producten" Role="Producten" Multiplicity="1" />
+    <End Type="iHFF1617S_B3Model.Restaurants" Role="Restaurants" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Producten">
+        <PropertyRef Name="Product_ID" />
+      </Principal>
+      <Dependent Role="Restaurants">
+        <PropertyRef Name="Restaurant_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Voorstell__Produ__4D5F7D71">
+    <End Type="iHFF1617S_B3Model.Producten" Role="Producten" Multiplicity="1" />
+    <End Type="iHFF1617S_B3Model.Voorstellingen" Role="Voorstellingen" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Producten">
+        <PropertyRef Name="Product_ID" />
+      </Principal>
+      <Dependent Role="Voorstellingen">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

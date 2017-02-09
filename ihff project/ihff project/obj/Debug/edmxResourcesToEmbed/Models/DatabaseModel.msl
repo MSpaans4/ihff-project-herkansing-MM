@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="iHFF1617S_B3ModelStoreContainer" CdmEntityContainer="iHFF1617S_B3E">
+    <EntitySetMapping Name="BesteldeItems">
+      <EntityTypeMapping TypeName="iHFF1617S_B3Model.BesteldeItems">
+        <MappingFragment StoreEntitySet="BesteldeItems">
+          <ScalarProperty Name="Zaal13_Codes" ColumnName="Zaal13_Codes" />
+          <ScalarProperty Name="Prijs" ColumnName="Prijs" />
+          <ScalarProperty Name="Aantal" ColumnName="Aantal" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Bestelling_ID" ColumnName="Bestelling_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bestellingen">
+      <EntityTypeMapping TypeName="iHFF1617S_B3Model.Bestellingen">
+        <MappingFragment StoreEntitySet="Bestellingen">
+          <ScalarProperty Name="Prijs" ColumnName="Prijs" />
+          <ScalarProperty Name="Datum" ColumnName="Datum" />
+          <ScalarProperty Name="Klant_ID" ColumnName="Klant_ID" />
+          <ScalarProperty Name="Bestelling_ID" ColumnName="Bestelling_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cultuur">
+      <EntityTypeMapping TypeName="iHFF1617S_B3Model.Cultuur">
+        <MappingFragment StoreEntitySet="Cultuur">
+          <ScalarProperty Name="Beschrijving_EN" ColumnName="Beschrijving_EN" />
+          <ScalarProperty Name="Beschrijving_NL" ColumnName="Beschrijving_NL" />
+          <ScalarProperty Name="Locatie" ColumnName="Locatie" />
+          <ScalarProperty Name="Soort" ColumnName="Soort" />
+          <ScalarProperty Name="Cultuur_ID" ColumnName="Cultuur_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Films">
+      <EntityTypeMapping TypeName="iHFF1617S_B3Model.Films">
+        <MappingFragment StoreEntitySet="Films">
+          <ScalarProperty Name="Acteurs" ColumnName="Acteurs" />
+          <ScalarProperty Name="Image_path" ColumnName="Image_path" />
+          <ScalarProperty Name="IMDb_rating" ColumnName="IMDb_rating" />
+          <ScalarProperty Name="Beschrijving_EN" ColumnName="Beschrijving_EN" />
+          <ScalarProperty Name="Beschrijving_NL" ColumnName="Beschrijving_NL" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Film_Naam" ColumnName="Film_Naam" />
+          <ScalarProperty Name="Film_ID" ColumnName="Film_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klanten">
+      <EntityTypeMapping TypeName="iHFF1617S_B3Model.Klanten">
+        <MappingFragment StoreEntitySet="Klanten">
+          <ScalarProperty Name="Emailadres" ColumnName="Emailadres" />
+          <ScalarProperty Name="Naam" ColumnName="Naam" />
+          <ScalarProperty Name="Klant_ID" ColumnName="Klant_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locaties">
+      <EntityTypeMapping TypeName="iHFF1617S_B3Model.Locaties">
+        <MappingFragment StoreEntitySet="Locaties">
+          <ScalarProperty Name="Lengte" ColumnName="Lengte" />
+          <ScalarProperty Name="Breedte" ColumnName="Breedte" />
+          <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+          <ScalarProperty Name="Toevoeging" ColumnName="Toevoeging" />
+          <ScalarProperty Name="Huisnummer" ColumnName="Huisnummer" />
+          <ScalarProperty Name="Straatnaam" ColumnName="Straatnaam" />
+          <ScalarProperty Name="Plaats" ColumnName="Plaats" />
+          <ScalarProperty Name="Locatie_Naam" ColumnName="Locatie_Naam" />
+          <ScalarProperty Name="Locatie_ID" ColumnName="Locatie_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medewerker">
+      <EntityTypeMapping TypeName="iHFF1617S_B3Model.Medewerker">
+        <MappingFragment StoreEntitySet="Medewerker">
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="Naam" ColumnName="Naam" />
+          <ScalarProperty Name="Medewerker_ID" ColumnName="Medewerker_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producten">
+      <EntityTypeMapping TypeName="iHFF1617S_B3Model.Producten">
+        <MappingFragment StoreEntitySet="Producten">
+          <ScalarProperty Name="Locatie_ID" ColumnName="Locatie_ID" />
+          <ScalarProperty Name="Image_Path" ColumnName="Image_Path" />
+          <ScalarProperty Name="Highlight_text_EN" ColumnName="Highlight_text_EN" />
+          <ScalarProperty Name="Highlight_text_NL" ColumnName="Highlight_text_NL" />
+          <ScalarProperty Name="Highlight" ColumnName="Highlight" />
+          <ScalarProperty Name="Prijs" ColumnName="Prijs" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaurants">
+      <EntityTypeMapping TypeName="iHFF1617S_B3Model.Restaurants">
+        <MappingFragment StoreEntitySet="Restaurants">
+          <ScalarProperty Name="Emailadres" ColumnName="Emailadres" />
+          <ScalarProperty Name="Slutingstijd" ColumnName="Slutingstijd" />
+          <ScalarProperty Name="Openingstijd" ColumnName="Openingstijd" />
+          <ScalarProperty Name="Beschrijving_EN" ColumnName="Beschrijving_EN" />
+          <ScalarProperty Name="Beschrijving_NL" ColumnName="Beschrijving_NL" />
+          <ScalarProperty Name="Soort_Keuken" ColumnName="Soort_Keuken" />
+          <ScalarProperty Name="Restaurant_ID" ColumnName="Restaurant_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="iHFF1617S_B3Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Voorstellingen">
+      <EntityTypeMapping TypeName="iHFF1617S_B3Model.Voorstellingen">
+        <MappingFragment StoreEntitySet="Voorstellingen">
+          <ScalarProperty Name="Zaal" ColumnName="Zaal" />
+          <ScalarProperty Name="Plaatsen_Over" ColumnName="Plaatsen_Over" />
+          <ScalarProperty Name="Eind_Tijd" ColumnName="Eind_Tijd" />
+          <ScalarProperty Name="Start_Tijd" ColumnName="Start_Tijd" />
+          <ScalarProperty Name="Dag" ColumnName="Dag" />
+          <ScalarProperty Name="Film_ID" ColumnName="Film_ID" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

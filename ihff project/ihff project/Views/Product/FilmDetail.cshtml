@@ -1,0 +1,169 @@
+﻿@using ihff_project.Models;
+@model AllFilmInfo
+
+@{
+    ViewBag.Title = "FilmDetail";
+}
+
+<h2>
+    @Model.Film_Naam -
+    @if (Model.Prijs == 0)
+    {
+        @:Free
+}
+    else
+    {
+        @: €@string.Format("{0:0.00}", Model.Prijs)
+}
+</h2>
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <p>
+            <img src="@Model.Image_path" alt="Movie image" width="250" />
+        </p>
+    </div>
+    <div class="col-md-4">
+        <p>
+            @Model.Beschrijving_EN
+        </p>
+    </div>
+
+    <div class="col-md-3">
+        <h4><label>Plays from @string.Format("{0:hh\\:mm}", Model.Start_Tijd) until @string.Format("{0:hh\\:mm}", Model.Eind_Tijd) in @Model.Locatie_Naam</label></h4><br \>
+        <h4><label>Actors</label></h4>
+        @Model.Acteurs <br \><br \>
+        <h4><label>Genre</label></h4>
+        @Model.Genre <br \><br \>
+        <h4><label>IMdB Rating</label></h4>
+        @Model.IMDb_rating <br \>
+        <div class="EventBuyButtonGroup">
+            <button class="btn btn-default AddToShoppingCart" id="pr-@Model.Product_ID">Buy now</button>
+            <button class="btn btn-default AddToProgramme" id="pr-@Model.Product_ID">Add to programme</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function () {
+    refreshFunc();
+    jQuery(".AddToProgramme").click(function (e) {
+        var day = '';
+        var strRestId = "" + (e.target.id);
+        var serviceURL = '/Product/AddToProgramme';
+
+        jQuery.ajax({
+            type: "POST",
+            url: serviceURL,
+            dataType: "json",
+
+            data: {idstr:strRestId},
+            success: function (data) {
+                refreshFunc();
+            },
+            error: errorFunc
+        });
+
+
+        function errorFunc() {
+            alert('An error has occurred while proccessing your request. Please try again later or contact the site admin.');
+        }
+
+    });
+    jQuery(".AddToShoppingCart").click(function (e) {
+        var strRestId = "" + (e.target.id);
+        var serviceURL = '/Product/AddToCart';
+
+        jQuery.ajax({
+            type: "POST",
+            url: serviceURL,
+            dataType: "json",
+
+            data: { idstr: strRestId },
+            success: function (data) {
+                refreshFunc();
+            },
+            error: errorFunc
+        });
+
+
+        function errorFunc() {
+            alert('An error has occurred while proccessing your request. Please try again later or contact the site admin.');
+        }
+
+    });
+
+    jQuery(".AddToCart").click(function (e) {
+        var serviceURL = '@Url.Action("AddToCart","Product")'
+        jQuery.ajax({
+            type: "GET",
+            url: serviceURL,
+            contentType: 'application/json',
+
+            success: function (data) {
+                refreshFunc();
+                location.href = '@Url.Action("ShoppingCart","Product")';
+            },
+            error: errorFunc
+        });
+
+
+        function errorFunc() {
+            alert('An error has occurred while proccessing your request. Please try again later or contact the site admin.');
+        }
+
+    });
+});
+
+function refreshFunc() {
+    var serviceURL = '@Url.Action("RefreshPersonalProgramme", "Product")';
+
+    jQuery.ajax({
+        type: "GET",
+        url: serviceURL,
+        contentType: 'application/json',
+        success: function (data) {
+            jQuery(".PersonalProgrammeBox-Content").html(data)
+
+        },
+        error: function (data) {
+
+            alert("An error has occurred while proccessing your request. Please try again later or contact the site admin.");
+        }
+    });
+
+
+}
+    jQuery("body").on('click', '.DeleteProductBtn', function (e) {
+        var strRestId = (e.target.id);
+
+        var serviceURL = '@Url.Action("RemoveFromProgramme", "Product")';
+
+        jQuery.ajax({
+            type: "POST",
+            url: serviceURL,
+            dataType: "json",
+
+            data: { productId: strRestId },
+            success: function (data) {
+                refreshFunc();
+
+            },
+            error: errorFunc
+        });
+
+
+        function errorFunc() {
+            alert('An error has occurred while proccessing your request. Please try again later or contact the site admin.');
+        }
+    });
+
+
+</script>
+
+

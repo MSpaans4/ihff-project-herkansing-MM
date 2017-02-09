@@ -1,0 +1,41 @@
+﻿
+@using ihff_project.Models;
+
+    @{
+        var products = Session["products"] as List<SessionBesteldeItem>;
+
+
+        if (products != null)
+        {
+
+            foreach (var product in products)
+            {
+                if (product.PersonalProgrammeOrShoppingCart == 1)
+                {
+                    if (product.SoortProduct == 1)
+                    {
+                    <p>
+                        @product.Film.Film_Naam + @product.Film.Prijs
+                       
+                            <button type="button" class="btn btn-default btn-xs pull-right DeleteProductBtn" id="prod-@product.Product">
+                                X
+                            </button>
+                        
+                    </p>
+
+                    }
+                    if (product.SoortProduct == 2)
+                    {
+                    <p>
+                        @product.Restaurant.Naam + @product.Restaurant.Prijs
+                        
+                            <button type="button" class="btn btn-default btn-xs pull-right DeleteProductBtn" id="prod-@product.Product">
+                                X
+                            </button>
+                       
+                    </p>
+                        }
+                    }
+                }
+            }
+        }

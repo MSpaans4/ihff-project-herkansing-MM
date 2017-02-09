@@ -1,0 +1,192 @@
+﻿@using ihff_project.Models
+@model IEnumerable<AllRestaurantsPageInfo>
+@{
+    ViewBag.Title = "Restaurants";
+}
+
+<h2>Restaurants</h2>
+<!-- check Engels of Nederlands, schrijf code-->
+<div class="row">
+    <div class="col-md-9">
+        <div class="container-fluid">
+            <div class="row">
+                @foreach (AllRestaurantsPageInfo r in Model)
+                {
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h4>@r.Naam</h4>
+                                <p>@ViewBag.test <br /><br />
+                                Openingstijden: @r.Openingstijd <br />
+                                Sluitingstijden: @r.Slutingstijd<button class="pull-right btn btn-danger ReserverRestaurant" id="rest-@r.Restaurant_ID">Reserveer</button></p>
+                                <hr style="border:1px solid black; " />
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="popup-reservation rest-@r.Restaurant_ID" style="padding:5px;">
+                                    <label>Day of reservation:</label>
+                                    <select id="day-rest-@r.Restaurant_ID">
+                                        <option value="3">Wednesday</option>
+                                        <option value="4">Thursday</option>
+                                        <option value="5">Friday</option>
+                                        <option value="6">Saturday</option>
+                                        <option value="7">Sunday</option>
+                                    </select>
+                                    <label>How many people</label>
+                                    <input type="number" max="5" id="qty-rest-@r.Restaurant_ID" value="2" />
+                                    <label>Will you enjoy it?</label>
+                                    <input type="checkbox" class="NoJoke" />
+                                    <button class="ConfirmReservation" id="pr-@r.Restaurant_ID">OK</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3">
+        <h3>Personal Programme</h3>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="PersonalProgrammeBox" style="border-radius: 10px; border: 1px dashed black; height: 300px; position: fixed; width: 14%;">
+                        <div class="PersonalProgrammeBox-Content" id="PersonalProgrammaContent" style="height:250px">
+                            @Html.Partial("~/Views/Product/_PersonalProgramme.cshtml")
+                        </div>
+                        
+                        <button type="button" class="btn btn-danger btn-lg btn-block AddToCart" style="background-color: #c48416 !important;">Add programme to cart</button>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .popup-reservation {
+        background-color: #808080;
+    }
+</style>
+
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function () {
+    refreshFunc();
+    jQuery(".popup-reservation").hide();
+
+    jQuery(".ReserverRestaurant").click(function (e) {
+        jQuery(".popup-reservation").hide();
+        var strid = (e.target.id);
+        jQuery("." + strid+"").show();
+    });
+
+
+    jQuery(".ConfirmReservation").click(function(e){
+        var strRestId = "" + (e.target.id);
+
+        var serviceURL = '/Product/AddToProgramme';
+
+        jQuery.ajax({
+            type: "POST",
+            url: serviceURL,
+            dataType: "json",
+
+            data: {idstr:strRestId},
+            success: function (data) {
+                refreshFunc();
+                jQuery(".popup-reservation").hide();
+            },
+            error: errorFunc
+        });
+
+
+        function errorFunc() {
+            alert('An error has occurred while proccessing your request. Please try again later or contact the site admin.');
+        }
+
+    });
+
+    jQuery(".AddToCart").click(function (e) {
+        var serviceURL = '@Url.Action("AddToCart","Product")'
+        jQuery.ajax({
+            type: "GET",
+            url: serviceURL,
+            contentType: 'application/json',
+
+            success: function (data) {
+                refreshFunc();
+                jQuery(".popup-reservation").hide();
+                location.href = '@Url.Action("ShoppingCart","Product")';
+            },
+            error: errorFunc
+        });
+
+
+        function errorFunc() {
+            alert('An error has occurred while proccessing your request. Please try again later or contact the site admin.');
+        }
+
+    });
+
+    jQuery(".DeleteProduct").click(function (e) {
+        alert('a');
+
+
+    });
+
+    
+});
+
+function refreshFunc() {
+    var serviceURL = '@Url.Action("RefreshPersonalProgramme", "Product")';
+
+    jQuery.ajax({
+        type: "GET",
+        url: serviceURL,
+        contentType: 'application/json',
+        success: function (data) {
+            jQuery(".PersonalProgrammeBox-Content").html(data)
+
+        },
+        error: function (data) {
+
+            alert("An error has occurred while proccessing your request. Please try again later or contact the site admin.");
+        }
+    });
+
+
+}
+    jQuery("body").on('click', '.DeleteProductBtn',function (e) {
+        var strRestId = (e.target.id);
+
+        var serviceURL = '@Url.Action("RemoveFromProgramme", "Product")';
+
+        jQuery.ajax({
+            type: "POST",
+            url: serviceURL,
+            dataType: "json",
+
+            data: { productId: strRestId },
+            success: function (data) {
+                refreshFunc();
+
+            },
+            error: errorFunc
+        });
+
+        
+        function errorFunc() {
+            alert('An error has occurred while proccessing your request. Please try again later or contact the site admin.');
+        }
+    });
+
+</script>
+
