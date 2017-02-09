@@ -15,17 +15,17 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-9">
-                                <h4>@r.Naam</h4>
+                                <h4>@r.locatie.Locatie_Naam</h4>
                                 <p>@ViewBag.test <br /><br />
-                                Openingstijden: @r.Openingstijd <br />
-                                Sluitingstijden: @r.Slutingstijd<button class="pull-right btn btn-danger ReserverRestaurant" id="rest-@r.Restaurant_ID">Reserveer</button></p>
+                                Openingstijden: @r.restaurant.Openingstijd <br />
+                                Sluitingstijden: @r.restaurant.Slutingstijd<button class="pull-right btn btn-danger ReserverRestaurant" id="rest-@r.restaurant.Restaurant_ID">Reserveer</button></p>
                                 <hr style="border:1px solid black; " />
                             </div>
 
                             <div class="col-md-3">
-                                <div class="popup-reservation rest-@r.Restaurant_ID" style="padding:5px;">
+                                <div class="popup-reservation rest-@r.restaurant.Restaurant_ID" style="padding:5px;">
                                     <label>Day of reservation:</label>
-                                    <select id="day-rest-@r.Restaurant_ID">
+                                    <select id="day-rest-@r.restaurant.Restaurant_ID">
                                         <option value="3">Wednesday</option>
                                         <option value="4">Thursday</option>
                                         <option value="5">Friday</option>
@@ -33,10 +33,10 @@
                                         <option value="7">Sunday</option>
                                     </select>
                                     <label>How many people</label>
-                                    <input type="number" max="5" id="qty-rest-@r.Restaurant_ID" value="2" />
+                                    <input type="number" max="5" id="qty-rest-@r.restaurant.Restaurant_ID" value="2" />
                                     <label>Will you enjoy it?</label>
                                     <input type="checkbox" class="NoJoke" />
-                                    <button class="ConfirmReservation" id="pr-@r.Restaurant_ID">OK</button>
+                                    <button class="ConfirmReservation" id="pr-@r.restaurant.Restaurant_ID">OK</button>
                                 </div>
 
                             </div>

@@ -116,14 +116,9 @@ namespace ihff_project.Repository
                          join locaties in ctx.Locaties on producten.Locatie_ID equals locaties.Locatie_ID
                          select new AllRestaurantsPageInfo()
                          {
-                             Naam = locaties.Locatie_Naam,
-                             Soort_Keuken = restaurants.Soort_Keuken,
-                             Restaurant_ID = restaurants.Restaurant_ID,
-                             Openingstijd = restaurants.Openingstijd,
-                             Slutingstijd = restaurants.Slutingstijd,
-                             Beschrijving_EN = restaurants.Beschrijving_EN,
-                             Beschrijving_NL = restaurants.Beschrijving_NL,
-                             Prijs = producten.Prijs
+                             restaurant = restaurants,
+                             product = producten,
+                             locatie = locaties
 
                          }).ToList();
 
@@ -139,15 +134,9 @@ namespace ihff_project.Repository
                          where restaurants.Restaurant_ID == restaurantId
                          select new AllRestaurantsPageInfo()
                          {
-                             Naam = locaties.Locatie_Naam,
-                             Soort_Keuken = restaurants.Soort_Keuken,
-                             Restaurant_ID = restaurants.Restaurant_ID,
-                             Openingstijd = restaurants.Openingstijd,
-                             Slutingstijd = restaurants.Slutingstijd,
-                             Beschrijving_EN = restaurants.Beschrijving_EN,
-                             Beschrijving_NL = restaurants.Beschrijving_NL,
-                             Prijs = producten.Prijs
-
+                             restaurant = restaurants,
+                             product = producten,
+                             locatie = locaties
 
                          }).FirstOrDefault();
 
