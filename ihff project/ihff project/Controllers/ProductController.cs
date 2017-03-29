@@ -22,7 +22,7 @@ namespace ihff_project.Controllers
         {
             IEnumerable<AllFilmInfo> filmList;
 
-            if (dag >= 3 && dag <= 7)
+            if (dag >= 3 && dag <= 7)   // vaag!!!! (enumeratie) + commentaar her & der
                 filmList = productRepository.GetAllFilmsDag(dag);
             else
                 filmList = productRepository.GetAllFilms();
@@ -155,10 +155,10 @@ namespace ihff_project.Controllers
 
             foreach (SessionBesteldeItem item in productsSession)
             {
-                item.PersonalProgrammeOrShoppingCart = 2;
+                item.PersonalProgrammeOrShoppingCart = 2;   // ???
             }
             
-            HttpContext.Session["products"] = productsSession;
+            HttpContext.Session["products"] = productsSession;  // overbodig...
 
             return View("ShoppingCart");
         }

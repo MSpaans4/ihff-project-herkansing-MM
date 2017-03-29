@@ -17,9 +17,9 @@ namespace ihff_project.Models
         public Cultuur Cultuur { get; set; }
 
         // 1 = personal, 2 = shopping
-        public int PersonalProgrammeOrShoppingCart { get; set; }
+        public int PersonalProgrammeOrShoppingCart { get; set; }    // enumeratie
 
         // 1 = Film/Special 2 = Restaurant 3 = Cultuur
-        public int SoortProduct { get; set; }
+        public int SoortProduct { get; set; }   // enumeratie!
     }
 }
