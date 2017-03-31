@@ -6,40 +6,40 @@
 }
 
 <h2>
-    @Model.Film_Naam -
-    @if (Model.Prijs == 0)
+    @Model.film.Film_Naam -
+    @if (Model.product.Prijs == 0)
     {
         @:Free
 }
     else
     {
-        @: €@string.Format("{0:0.00}", Model.Prijs)
+        @: €@string.Format("{0:0.00}", Model.product.Prijs)
 }
 </h2>
 <hr />
 <div class="row">
     <div class="col-md-3">
         <p>
-            <img src="@Model.Image_path" alt="Movie image" width="250" />
+            <img src="@Model.film.Image_path" alt="Movie image" width="250" />
         </p>
     </div>
     <div class="col-md-4">
         <p>
-            @Model.Beschrijving_EN
+            @Model.film.Beschrijving_EN
         </p>
     </div>
 
     <div class="col-md-3">
-        <h4><label>Plays from @string.Format("{0:hh\\:mm}", Model.Start_Tijd) until @string.Format("{0:hh\\:mm}", Model.Eind_Tijd) in @Model.Locatie_Naam</label></h4><br \>
+        <h4><label>Plays from @string.Format("{0:hh\\:mm}", Model.voorstelling.Start_Tijd) until @string.Format("{0:hh\\:mm}", Model.voorstelling.Eind_Tijd) in @Model.locatie.Locatie_Naam</label></h4><br \>
         <h4><label>Actors</label></h4>
-        @Model.Acteurs <br \><br \>
+        @Model.film.Acteurs <br \><br \>
         <h4><label>Genre</label></h4>
-        @Model.Genre <br \><br \>
+        @Model.film.Genre <br \><br \>
         <h4><label>IMdB Rating</label></h4>
-        @Model.IMDb_rating <br \>
+        @Model.film.IMDb_rating <br \>
         <div class="EventBuyButtonGroup">
-            <button class="btn btn-default AddToShoppingCart" id="pr-@Model.Product_ID">Buy now</button>
-            <button class="btn btn-default AddToProgramme" id="pr-@Model.Product_ID">Add to programme</button>
+            <button class="btn btn-default AddToShoppingCart" id="pr-@Model.product.Product_ID">Buy now</button>
+            <button class="btn btn-default AddToProgramme" id="pr-@Model.product.Product_ID">Add to programme</button>
         </div>
     </div>
 </div>

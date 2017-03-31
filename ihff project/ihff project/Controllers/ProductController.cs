@@ -67,22 +67,6 @@ namespace ihff_project.Controllers
             return View(restaurants);
         }
 
-
-        [HttpPost]
-        [MultipleButton(Name = "action", Argument = "Buy")]
-        public ActionResult Buy(AllFilmInfo film)
-        {
-            return RedirectToAction("Events");
-        }
-
-        [HttpPost]
-        [MultipleButton(Name = "action", Argument = "Programme")]
-        public ActionResult Programme(AllFilmInfo film)
-        {
-            return RedirectToAction("Events");
-        }
-
-        
         public ActionResult Cultuur()
         {
             IEnumerable<Locaties> locatie = productRepository.GetAllLocaties();

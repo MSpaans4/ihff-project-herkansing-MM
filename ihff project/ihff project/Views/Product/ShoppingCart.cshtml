@@ -41,13 +41,13 @@
             {
                 if (product.SoortProduct == 1)
                 {
-                <h4 class="day-@product.Zaal13_Codes">@product.Film.Film_Naam + @product.Film.Prijs <button type="button" class="btn btn-default btn-xs pull-right DeleteProductBtn" id="prod-@product.Product">
+                <h4 class="day-@product.Zaal13_Codes">@product.Film.film.Film_Naam + @product.Film.product.Prijs <button type="button" class="btn btn-default btn-xs pull-right DeleteProductBtn" id="prod-@product.Product">
     X
 </button></h4>
                 }
                 if (product.SoortProduct == 2)
                 {
-                <h4 class="day-@product.Zaal13_Codes">@product.Restaurant.Naam + @product.Restaurant.Prijs <button type="button" class="btn btn-default btn-xs pull-right DeleteProductBtn" id="prod-@product.Product">
+                <h4 class="day-@product.Zaal13_Codes">@product.Restaurant.locatie.Locatie_Naam + @product.Restaurant.product.Prijs <button type="button" class="btn btn-default btn-xs pull-right DeleteProductBtn" id="prod-@product.Product">
     X
 </button></h4>
                     }
