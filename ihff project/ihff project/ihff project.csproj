@@ -186,6 +186,7 @@
     <Compile Include="Models\Cultuur.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dagen.cs" />
     <Compile Include="Models\DatabaseModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -229,9 +230,7 @@
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\DbHomeRepository.cs" />
     <Compile Include="Repository\DbProductRepository.cs" />
-    <Compile Include="Repository\IHomeRepository.cs" />
     <Compile Include="Repository\IProductRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

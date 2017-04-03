@@ -1,7 +1,49 @@
-﻿
+﻿@using ihff_project.Models;
+@model AllRestaurantsPageInfo
+
 @{
     ViewBag.Title = "RestaurantDetail";
 }
 
-<h2>RestaurantDetail</h2>
+<h2>
+    @Model.locatie.Locatie_Naam
+</h2>
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <p>
+            <img src="@Model.locatie.Image_path" alt="Movie image" width="200" />
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h4><label>Menu</label></h4>
+        <p>
+            <img src="@Model.restaurant.Menu" alt="Movie image" width="100%" />
+        </p>
+    </div>
+
+    <div class="col-md-3">
+        <h4><label>Open from @string.Format("{0:hh\\:mm}", Model.restaurant.Openingstijd) until @string.Format("{0:hh\\:mm}", Model.restaurant.Slutingstijd)</label></h4>
+        <div id="map" style="width:100%;height:300px"></div>
+
+        <script>
+            function myMap() {
+                var myCenter = new google.maps.LatLng(52.3815268, 4.63865060000001);
+                var mapCanvas = document.getElementById("map");
+                var mapOptions = { center: myCenter, zoom: 12 };
+                var map = new google.maps.Map(mapCanvas, mapOptions);
+                var marker = new google.maps.Marker({ position: myCenter });
+                marker.setMap(map);
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: "Stempels Brasserie"
+                });
+                infowindow.open(map, marker);
+            }
+
+        </script><br \>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDefQwLbd0bgfj70rf9EOlWK-ZSsTIEJcM&callback=myMap"></script>
+    </div>
+</div>
 

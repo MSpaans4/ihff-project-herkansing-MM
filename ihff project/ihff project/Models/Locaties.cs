@@ -30,6 +30,7 @@ namespace ihff_project.Models
         public string Postcode { get; set; }
         public Nullable<double> Breedte { get; set; }
         public Nullable<double> Lengte { get; set; }
+        public string Image_path { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cultuur> Cultuur { get; set; }

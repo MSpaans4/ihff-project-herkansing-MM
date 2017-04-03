@@ -22,33 +22,17 @@ namespace ihff_project.Controllers
         {
             IEnumerable<AllFilmInfo> filmList;
 
-            if (dag >= 3 && dag <= 7)   // vaag!!!! (enumeratie) + commentaar her & der
-                filmList = productRepository.GetAllFilmsDag(dag);
-            else
-                filmList = productRepository.GetAllFilms();
-
-            switch(dag)
+            if (dag >= (int)Dagen.Wednesday && dag <= (int)Dagen.Sunday)
             {
-                case 3:
-                    ViewBag.Dag = "Wednesday";
-                    break;
-                case 4:
-                    ViewBag.Dag = "Thursday";
-                    break;
-                case 5:
-                    ViewBag.Dag = "Friday";
-                    break;
-                case 6:
-                    ViewBag.Dag = "Saterday";
-                    break;
-                case 7:
-                    ViewBag.Dag = "Sunday";
-                    break;
-                default:
-                    ViewBag.Dag = "the programme";
-                    break;
+                filmList = productRepository.GetAllFilmsDag(dag);
+                ViewBag.Dag = (Dagen)Enum.ToObject(typeof(Dagen), dag);
             }
-                
+            else
+            {
+                filmList = productRepository.GetAllFilms();
+                ViewBag.Dag = "the programme";
+            }
+
             return View(filmList);
         }
 
@@ -79,9 +63,10 @@ namespace ihff_project.Controllers
             return View(film);
         }
 
-        public ActionResult RestaurantDetail()
+        public ActionResult RestaurantDetail(int restaurant_ID)
         {
-            return View();
+            AllRestaurantsPageInfo restaurant = productRepository.GetRestaurant(restaurant_ID);
+            return View(restaurant);
         }
 
         [HttpGet]

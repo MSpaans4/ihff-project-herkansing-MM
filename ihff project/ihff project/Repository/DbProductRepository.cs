@@ -167,5 +167,10 @@ namespace ihff_project.Repository
             var v = ctx.Locaties.OrderBy(a => a.Locatie_Naam).ToList();
             return v;
         }
+
+        public IEnumerable<Producten> GetAllHighlights()
+        {
+            return ctx.Producten.Where(c => c.Highlight == true).ToList();
+        }
     }
 }

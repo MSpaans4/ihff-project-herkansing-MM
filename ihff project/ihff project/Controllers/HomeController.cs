@@ -10,26 +10,12 @@ namespace ihff_project.Controllers
 {
     public class HomeController : Controller
     {
-        private IHomeRepository homeRepository = new DbHomeRepository();
+        private IProductRepository productRepository = new DbProductRepository();
 
         public ActionResult Index()
         {
-            IEnumerable<Producten> highlights = homeRepository.GetAllHighlights();
+            IEnumerable<Producten> highlights = productRepository.GetAllHighlights();
             return View(highlights);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

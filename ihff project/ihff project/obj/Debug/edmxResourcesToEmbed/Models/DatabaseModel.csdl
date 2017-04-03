@@ -118,6 +118,7 @@
     <Property Name="Lengte" Type="Double" />
     <NavigationProperty Name="Cultuur" Relationship="iHFF1617S_B3Model.FK__Cultuur__Locatie__5BAD9CC8" FromRole="Locaties" ToRole="Cultuur" />
     <NavigationProperty Name="Producten" Relationship="iHFF1617S_B3Model.FK__Producten__Locat__4A8310C6" FromRole="Locaties" ToRole="Producten" />
+    <Property Name="Image_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Medewerker">
     <Key>
@@ -156,6 +157,7 @@
     <Property Name="Slutingstijd" Type="Time" Precision="7" />
     <Property Name="Emailadres" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Producten" Relationship="iHFF1617S_B3Model.FK__Restauran__Resta__6166761E" FromRole="Restaurants" ToRole="Producten" />
+    <Property Name="Menu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

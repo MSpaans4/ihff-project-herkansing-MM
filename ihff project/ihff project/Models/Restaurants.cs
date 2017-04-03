@@ -21,6 +21,7 @@ namespace ihff_project.Models
         public Nullable<System.TimeSpan> Openingstijd { get; set; }
         public Nullable<System.TimeSpan> Slutingstijd { get; set; }
         public string Emailadres { get; set; }
+        public string Menu { get; set; }
     
         public virtual Producten Producten { get; set; }
     }

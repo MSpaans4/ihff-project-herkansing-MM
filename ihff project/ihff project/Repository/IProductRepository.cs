@@ -21,5 +21,6 @@ namespace ihff_project.Repository
         AllRestaurantsPageInfo GetRestaurant(int restaurantId);
         SessionBesteldeItem GetSessionBesteldeItem(int productId);
         IEnumerable<Locaties> GetAllLocaties();
+        IEnumerable<Producten> GetAllHighlights();
     }
 }

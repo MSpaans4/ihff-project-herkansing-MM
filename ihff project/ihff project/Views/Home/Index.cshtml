@@ -5,30 +5,37 @@
     ViewBag.Title = "Home Page";
 }
 
-<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
-<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
-@Styles.Render("~/Content/css")
-
-<script type="text/javascript">
-
-    $(document).ready(function()
-    {
-        $("#slideshow > div:gt(0)").hide();
-        setInterval(function()
-        {
-            $('#SlideshowImages > div:first').fadeOut(0).next().fadeIn(0).end().appendTo('#SlideshowImages');        
-        }, 5000);
-    });
-</script>
-
-<div class="jumbotron">
-    <div id="SlideshowImages">        
-        @foreach (Producten p in Model)
-        {
-            <div> <img src="@p.Image_Path" width="1140" height="400"> </div>
-        }
-    </div> 
+<div class="w3-content w3-display-container">
+    @foreach (Producten product in Model)
+    {<a href='@Url.Action("Cultuur", "Product")'>
+         <img class="mySlides" src="@product.Image_Path" style="height:360px; width:1000px">
+    </a>
+        <div class="w3-display-bottomleft w3-container w3-padding-16 w3-black">
+            @product.Highlight_text_EN
+        </div>}
+    <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+    <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
 </div>
+
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+    }
+</script>
 
 <div class="row">
     <div class="col-md-4">

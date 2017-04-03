@@ -15,8 +15,8 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-9">
-                                <h4>@r.locatie.Locatie_Naam</h4>
-                                <p>@ViewBag.test <br /><br />
+                                <h4>@Html.ActionLink(r.locatie.Locatie_Naam, "RestaurantDetail", "Product", new { r.restaurant.Restaurant_ID }, null)</h4>
+                                <p>@r.restaurant.Beschrijving_EN <br /><br />
                                 Openingstijden: @r.restaurant.Openingstijd <br />
                                 Sluitingstijden: @r.restaurant.Slutingstijd<button class="pull-right btn btn-danger ReserverRestaurant" id="rest-@r.restaurant.Restaurant_ID">Reserveer</button></p>
                                 <hr style="border:1px solid black; " />

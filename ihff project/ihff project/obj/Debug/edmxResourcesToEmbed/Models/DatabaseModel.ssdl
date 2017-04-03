@@ -64,6 +64,7 @@
     <Property Name="Postcode" Type="varchar" MaxLength="6" />
     <Property Name="Breedte" Type="float" />
     <Property Name="Lengte" Type="float" />
+    <Property Name="Image_path" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="Medewerker">
     <Key>
@@ -97,6 +98,7 @@
     <Property Name="Openingstijd" Type="time" Precision="7" />
     <Property Name="Slutingstijd" Type="time" Precision="7" />
     <Property Name="Emailadres" Type="varchar" MaxLength="255" />
+    <Property Name="Menu" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

@@ -59,6 +59,7 @@
     <EntitySetMapping Name="Locaties">
       <EntityTypeMapping TypeName="iHFF1617S_B3Model.Locaties">
         <MappingFragment StoreEntitySet="Locaties">
+          <ScalarProperty Name="Image_path" ColumnName="Image_path" />
           <ScalarProperty Name="Lengte" ColumnName="Lengte" />
           <ScalarProperty Name="Breedte" ColumnName="Breedte" />
           <ScalarProperty Name="Postcode" ColumnName="Postcode" />
@@ -97,6 +98,7 @@
     <EntitySetMapping Name="Restaurants">
       <EntityTypeMapping TypeName="iHFF1617S_B3Model.Restaurants">
         <MappingFragment StoreEntitySet="Restaurants">
+          <ScalarProperty Name="Menu" ColumnName="Menu" />
           <ScalarProperty Name="Emailadres" ColumnName="Emailadres" />
           <ScalarProperty Name="Slutingstijd" ColumnName="Slutingstijd" />
           <ScalarProperty Name="Openingstijd" ColumnName="Openingstijd" />

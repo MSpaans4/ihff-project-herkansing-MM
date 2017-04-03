@@ -24,13 +24,32 @@
         </p>
     </div>
     <div class="col-md-4">
+        <h4><label>Movie summary</label></h4>
         <p>
             @Model.film.Beschrijving_EN
         </p>
     </div>
 
     <div class="col-md-3">
-        <h4><label>Plays from @string.Format("{0:hh\\:mm}", Model.voorstelling.Start_Tijd) until @string.Format("{0:hh\\:mm}", Model.voorstelling.Eind_Tijd) in @Model.locatie.Locatie_Naam</label></h4><br \>
+        <h4><label>Plays from @string.Format("{0:hh\\:mm}", Model.voorstelling.Start_Tijd) until @string.Format("{0:hh\\:mm}", Model.voorstelling.Eind_Tijd) in @Model.locatie.Locatie_Naam</label></h4>
+        <div id="map" style="width:100%;height:300px"></div>
+
+        <script>
+            function myMap() {
+                var myCenter = new google.maps.LatLng(52.3815268, 4.63865060000001);
+                var mapCanvas = document.getElementById("map");
+                var mapOptions = { center: myCenter, zoom: 12 };
+                var map = new google.maps.Map(mapCanvas, mapOptions);
+                var marker = new google.maps.Marker({ position: myCenter });
+                marker.setMap(map);
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: "Philharmonie"
+                });
+                infowindow.open(map, marker);
+            }
+
+        </script><br \>
         <h4><label>Actors</label></h4>
         @Model.film.Acteurs <br \><br \>
         <h4><label>Genre</label></h4>
@@ -44,7 +63,7 @@
     </div>
 </div>
 
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDefQwLbd0bgfj70rf9EOlWK-ZSsTIEJcM&callback=myMap"></script>
 
 
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
