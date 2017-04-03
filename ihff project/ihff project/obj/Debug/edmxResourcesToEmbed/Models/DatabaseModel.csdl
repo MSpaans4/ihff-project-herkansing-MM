@@ -114,8 +114,8 @@
     <Property Name="Huisnummer" Type="Int32" />
     <Property Name="Toevoeging" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Postcode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
-    <Property Name="Breedte" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Lengte" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Breedte" Type="Double" />
+    <Property Name="Lengte" Type="Double" />
     <NavigationProperty Name="Cultuur" Relationship="iHFF1617S_B3Model.FK__Cultuur__Locatie__5BAD9CC8" FromRole="Locaties" ToRole="Cultuur" />
     <NavigationProperty Name="Producten" Relationship="iHFF1617S_B3Model.FK__Producten__Locat__4A8310C6" FromRole="Locaties" ToRole="Producten" />
   </EntityType>

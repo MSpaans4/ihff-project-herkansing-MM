@@ -5,17 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3d8c8e639462459393dd5ca8bf15de45" Name="Diagram1">
-        <EntityTypeShape EntityType="iHFF1617S_B3Model.BesteldeItems" Width="1.5" PointX="5.25" PointY="7.75" />
-        <EntityTypeShape EntityType="iHFF1617S_B3Model.Bestellingen" Width="1.5" PointX="3" PointY="11.875" />
-        <EntityTypeShape EntityType="iHFF1617S_B3Model.Cultuur" Width="1.5" PointX="3" PointY="4.5" />
-        <EntityTypeShape EntityType="iHFF1617S_B3Model.Films" Width="1.5" PointX="6" PointY="3.625" />
-        <EntityTypeShape EntityType="iHFF1617S_B3Model.Klanten" Width="1.5" PointX="0.75" PointY="12" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.BesteldeItems" Width="1.5" PointX="8.25" PointY="4.875" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Bestellingen" Width="1.5" PointX="6" PointY="0.875" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Cultuur" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Films" Width="1.5" PointX="3" PointY="12.625" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Klanten" Width="1.5" PointX="3.75" PointY="1.125" />
         <EntityTypeShape EntityType="iHFF1617S_B3Model.Locaties" Width="1.5" PointX="0.75" PointY="5.875" />
         <EntityTypeShape EntityType="iHFF1617S_B3Model.Medewerker" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="iHFF1617S_B3Model.Producten" Width="1.5" PointX="3" PointY="7.375" />
-        <EntityTypeShape EntityType="iHFF1617S_B3Model.Restaurants" Width="1.5" PointX="5.25" PointY="14.25" />
-        <EntityTypeShape EntityType="iHFF1617S_B3Model.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="iHFF1617S_B3Model.Voorstellingen" Width="1.5" PointX="8.25" PointY="7.625" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Producten" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Restaurants" Width="1.5" PointX="5.25" PointY="11.375" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.sysdiagrams" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="iHFF1617S_B3Model.Voorstellingen" Width="1.5" PointX="5.25" PointY="4.625" />
         <AssociationConnector Association="iHFF1617S_B3Model.FK__BesteldeI__Beste__43D61337" />
         <AssociationConnector Association="iHFF1617S_B3Model.FK__BesteldeI__Produ__44CA3770" />
         <AssociationConnector Association="iHFF1617S_B3Model.FK__Bestellin__Klant__489AC854" />
