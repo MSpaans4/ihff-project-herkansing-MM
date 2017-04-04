@@ -20,6 +20,9 @@ namespace ihff_project.Repository
         AllRestaurantsPageInfo GetRestaurant(int restaurantId);
         SessionBesteldeItem GetSessionBesteldeItem(int productId);
         IEnumerable<Locaties> GetAllLocaties();
+        IEnumerable<AllCultureInfo> GetCultureInfo();
         IEnumerable<Producten> GetAllHighlights();
+        IEnumerable<AllFilmInfo> GetAllLecture();
+        IEnumerable<AllFilmInfo> GetAllMovies();
     }
 }

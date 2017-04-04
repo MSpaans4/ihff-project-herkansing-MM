@@ -49,6 +49,46 @@ namespace ihff_project.Repository
             return query;
         }
 
+        public IEnumerable<AllFilmInfo> GetAllLecture()
+        {
+            var query = (from producten in ctx.Producten
+                         join voorstellingen in ctx.Voorstellingen on producten.Product_ID equals voorstellingen.Product_ID
+                         join films in ctx.Films on voorstellingen.Film_ID equals films.Film_ID
+                         join locaties in ctx.Locaties on producten.Locatie_ID equals locaties.Locatie_ID
+                         where films.Genre == "Lecture"
+                         orderby voorstellingen.Dag ,voorstellingen.Start_Tijd ascending
+                         select new AllFilmInfo()
+                         {
+                             locatie = locaties,
+                             product = producten,
+                             film = films,
+                             voorstelling = voorstellingen
+
+                         }).ToList();
+
+            return query;
+        }
+
+        public IEnumerable<AllFilmInfo> GetAllMovies()
+        {
+            var query = (from producten in ctx.Producten
+                         join voorstellingen in ctx.Voorstellingen on producten.Product_ID equals voorstellingen.Product_ID
+                         join films in ctx.Films on voorstellingen.Film_ID equals films.Film_ID
+                         join locaties in ctx.Locaties on producten.Locatie_ID equals locaties.Locatie_ID
+                         where films.Genre != "Lecture"
+                         orderby voorstellingen.Dag, voorstellingen.Start_Tijd ascending
+                         select new AllFilmInfo()
+                         {
+                             locatie = locaties,
+                             product = producten,
+                             film = films,
+                             voorstelling = voorstellingen
+
+                         }).ToList();
+
+            return query;
+        }
+
         // Voor SessionBesteldeItem
         public AllFilmInfo GetFilmForSession(int productId)
         {
@@ -159,8 +199,21 @@ namespace ihff_project.Repository
 
         public IEnumerable<Locaties> GetAllLocaties()
         {
-            var v = ctx.Locaties.OrderBy(a => a.Locatie_Naam).ToList();
-            return v;
+            var locaties = ctx.Locaties.OrderBy(a => a.Locatie_Naam).ToList();
+            return locaties;
+        }
+
+        public IEnumerable<AllCultureInfo> GetCultureInfo()
+        {
+            var cultureInfo = (from cultuur in ctx.Cultuur
+                               join locaties in ctx.Locaties on cultuur.Locatie equals locaties.Locatie_ID
+                               select new AllCultureInfo()
+                               {
+                                   cultuur = cultuur,
+                                   locatie = locaties
+
+                               }).ToList();
+            return cultureInfo;
         }
 
         public IEnumerable<Producten> GetAllHighlights()

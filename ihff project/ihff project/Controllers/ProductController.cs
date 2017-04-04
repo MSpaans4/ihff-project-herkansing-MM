@@ -18,19 +18,29 @@ namespace ihff_project.Controllers
             return View();
         }
 
-        public ActionResult Events(int dag)
+        public ActionResult Events(int filterr)
         {
             IEnumerable<AllFilmInfo> filmList;
 
-            if (dag >= (int)Dagen.Wednesday && dag <= (int)Dagen.Sunday)
+            if (filterr >= (int)FilterDagOfLecture.Wednesday && filterr <= (int)FilterDagOfLecture.Sunday)
             {
-                filmList = productRepository.GetAllFilmsDag(dag);
-                ViewBag.Dag = (Dagen)Enum.ToObject(typeof(Dagen), dag);
+                filmList = productRepository.GetAllFilmsDag(filterr);
+                ViewBag.Filterr = "All events on " + (FilterDagOfLecture)Enum.ToObject(typeof(FilterDagOfLecture), filterr);
+            }
+            else if(filterr == (int)FilterDagOfLecture.Lecture)
+            {
+                filmList = productRepository.GetAllLecture();
+                ViewBag.Filterr = "All the specials on the programme";
+            }
+            else if (filterr == (int)FilterDagOfLecture.Movies)
+            {
+                filmList = productRepository.GetAllMovies();
+                ViewBag.Filterr = "All the movies on the programme";
             }
             else
             {
                 filmList = productRepository.GetAllFilms();
-                ViewBag.Dag = "the programme";
+                ViewBag.Filterr = "All events on the programme";
             }
 
             return View(filmList);
@@ -53,8 +63,8 @@ namespace ihff_project.Controllers
 
         public ActionResult Cultuur()
         {
-            IEnumerable<Locaties> locatie = productRepository.GetAllLocaties();
-            return View(locatie);
+            IEnumerable<AllCultureInfo> cultureInfo = productRepository.GetCultureInfo();
+            return View(cultureInfo);
         }
 
         public ActionResult FilmDetail(int product_ID)

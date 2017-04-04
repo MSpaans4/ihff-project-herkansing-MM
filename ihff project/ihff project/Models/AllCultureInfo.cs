@@ -5,8 +5,9 @@ using System.Web;
 
 namespace ihff_project.Models
 {
-    public enum FilterDagOfLecture
+    public class AllCultureInfo
     {
-        Movies = 1, Lecture, Wednesday , Thursday, Friday, Saterday, Sunday
+        public Locaties locatie;
+        public Cultuur cultuur;
     }
 }

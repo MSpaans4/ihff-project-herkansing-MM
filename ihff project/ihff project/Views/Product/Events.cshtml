@@ -12,16 +12,20 @@
             <div class="row">
                 <div class="col-md-12">
                     <h3>
-                        @Html.ActionLink("All", "Events", "Product", new { dag = 0 }, null)
-                        @Html.ActionLink("Wednesday", "Events", "Product", new { dag = 3 }, null)
-                        @Html.ActionLink("Thursday", "Events", "Product", new { dag = 4 }, null)
-                        @Html.ActionLink("Friday", "Events", "Product", new { dag = 5 }, null)
-                        @Html.ActionLink("Saterday", "Events", "Product", new { dag = 6 }, null)
-                        @Html.ActionLink("Sunday", "Events", "Product", new { dag = 7 }, null)
+                        @Html.ActionLink("Movies", "Events", "Product", new { filterr = 1 }, null)
+                        @Html.ActionLink("Lecture", "Events", "Product", new { filterr = 2 }, null)
+                    </h3>
+                    <h3>
+                        @Html.ActionLink("All", "Events", "Product", new { filterr = 0 }, null)
+                        @Html.ActionLink("Wednesday", "Events", "Product", new { filterr = 3 }, null)
+                        @Html.ActionLink("Thursday", "Events", "Product", new { filterr = 4 }, null)
+                        @Html.ActionLink("Friday", "Events", "Product", new { filterr = 5 }, null)
+                        @Html.ActionLink("Saterday", "Events", "Product", new { filterr = 6 }, null)
+                        @Html.ActionLink("Sunday", "Events", "Product", new { filterr = 7 }, null)
                     </h3>
 
                     <hr />
-                    <h3>All events on @ViewBag.Dag</h3><br \>
+                    <h3>@ViewBag.Filterr</h3><br \>
                 </div>
                     @foreach (AllFilmInfo f in Model)
                     {
@@ -40,9 +44,9 @@
                         }
                             </label>
                         </h4>
-                        <p>
+                        <p>                          
                             <img src="@f.film.Image_path" alt="Movie image" height="250" />
-                            [@string.Format("{0:hh\\:mm}", f.voorstelling.Start_Tijd) until @string.Format("{0:hh\\:mm}", f.voorstelling.Eind_Tijd)] in @f.locatie.Locatie_Naam - @f.voorstelling.Zaal <br \>
+                            [@string.Format("{0:hh\\:mm}", f.voorstelling.Start_Tijd) until @string.Format("{0:hh\\:mm}", f.voorstelling.Eind_Tijd) on @((FilterDagOfLecture)Enum.ToObject(typeof(FilterDagOfLecture), f.voorstelling.Dag))] in @f.locatie.Locatie_Naam - @f.voorstelling.Zaal <br \>
                         </p>
                         @if (f.film.IMDb_rating != null)
                         {

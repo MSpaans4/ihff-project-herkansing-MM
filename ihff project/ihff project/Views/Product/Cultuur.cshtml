@@ -1,33 +1,69 @@
 ﻿@using ihff_project.Models;
-@model IEnumerable<Locaties>
+@model IEnumerable<AllCultureInfo>
 
 @{
     ViewBag.Title = "Cultuur";
 }
 
 <h2>Culture</h2>
-<h3>Map of Haarlem</h3>
-<div id="map" style="width:100%;height:500px"></div>
+
+<div class="row">
+    <div class="col-md-3">
+        <h3>Culture items</h3>
+        <div class="container-fluid">
+            <div class="row">
+                @foreach (AllCultureInfo c in Model)
+                {
+                    <div class="col-md-12">
+                        <h4>@c.locatie.Locatie_Naam</h4><br />
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-9">
+        <h3>Map of Haarlem</h3>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="map" style="width:100%; height:370px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                hier moet dan informatie komen van waarop je klikt
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
-function myMap() {
-  var myCenter = new google.maps.LatLng(52.3817502, 4.6293242000000419);
-  var mapCanvas = document.getElementById("map");
-  var mapOptions = {center: myCenter, zoom: 13};
-  var map = new google.maps.Map(mapCanvas, mapOptions);
-  //var marker = new google.maps.Marker({position:myCenter});
-  //marker.setMap(map);
+    function myMap() {
+        var myCenter = new google.maps.LatLng(52.390609, 4.628798);
+        var mapCanvas = document.getElementById("map");
+        var mapOptions = { center: myCenter, zoom: 13 };
+        var map = new google.maps.Map(mapCanvas, mapOptions);
 
-    @foreach (Locaties l in Model)
+    @foreach (AllCultureInfo c in Model)
     {
-        <text>var marker</text>@l.Locatie_ID <text> = new google.maps.Marker({ position: new google.maps.LatLng(</text>@l.Breedte <text>,</text> @l.Lengte <text>) });</text>
-        <text>marker</text>@l.Locatie_ID<text>.setMap(map);</text>
-            }
+        @:var marker_@c.cultuur.Cultuur_ID = new google.maps.Marker({ position: new google.maps.LatLng(@c.locatie.Breedte , @c.locatie.Lengte ) });
+        @:marker_@c.cultuur.Cultuur_ID .setMap(map);
+        @:var infowindow = new google.maps.InfoWindow({
+                    @:content: "@c.locatie.Locatie_Naam"
+                @: });
 
-        
+                @:google.maps.event.addListener(marker_@c.cultuur.Cultuur_ID , 'click', function() {
+        @:infowindow.open(map, marker_@c.cultuur.Cultuur_ID ) });
+    }    
 }
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDefQwLbd0bgfj70rf9EOlWK-ZSsTIEJcM&callback=myMap"></script>
 
-}
+

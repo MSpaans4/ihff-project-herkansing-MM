@@ -175,6 +175,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AllCultureInfo.cs" />
     <Compile Include="Models\AllFilmInfo.cs" />
     <Compile Include="Models\AllRestaurantsPageInfo.cs" />
     <Compile Include="Models\BesteldeItems.cs">
