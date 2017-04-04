@@ -11,17 +11,20 @@
 
 <script>
 function myMap() {
-    var myCenter = new google.maps.LatLng(52.3817502, 4.6293242000000419);
+  var myCenter = new google.maps.LatLng(52.3817502, 4.6293242000000419);
   var mapCanvas = document.getElementById("map");
   var mapOptions = {center: myCenter, zoom: 13};
   var map = new google.maps.Map(mapCanvas, mapOptions);
-  var marker = new google.maps.Marker({position:myCenter});
-  marker.setMap(map);
+  //var marker = new google.maps.Marker({position:myCenter});
+  //marker.setMap(map);
 
-  var infowindow = new google.maps.InfoWindow({
-    content: "Philharmonie"
-  });
-  infowindow.open(map,marker);
+    @foreach (Locaties l in Model)
+    {
+        <text>var marker</text>@l.Locatie_ID <text> = new google.maps.Marker({ position: new google.maps.LatLng(</text>@l.Breedte <text>,</text> @l.Lengte <text>) });</text>
+        <text>marker</text>@l.Locatie_ID<text>.setMap(map);</text>
+            }
+
+        
 }
 </script>
 

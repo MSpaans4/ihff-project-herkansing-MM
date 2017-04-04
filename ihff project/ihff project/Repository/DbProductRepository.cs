@@ -104,11 +104,6 @@ namespace ihff_project.Repository
             return ctx.Voorstellingen.SingleOrDefault(c => c.Product_ID == productId);
         }
 
-        public void EditFilm(Films film)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<AllRestaurantsPageInfo> GetAllRestaurants()
         {
             var query = (from producten in ctx.Producten

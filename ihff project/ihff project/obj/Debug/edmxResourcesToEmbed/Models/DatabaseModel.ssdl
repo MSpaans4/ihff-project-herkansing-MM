@@ -62,8 +62,8 @@
     <Property Name="Huisnummer" Type="int" />
     <Property Name="Toevoeging" Type="varchar" MaxLength="10" />
     <Property Name="Postcode" Type="varchar" MaxLength="6" />
-    <Property Name="Breedte" Type="float" />
-    <Property Name="Lengte" Type="float" />
+    <Property Name="Breedte" Type="varchar" MaxLength="50" />
+    <Property Name="Lengte" Type="varchar" MaxLength="50" />
     <Property Name="Image_path" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="Medewerker">

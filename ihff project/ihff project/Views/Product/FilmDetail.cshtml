@@ -36,7 +36,8 @@
 
         <script>
             function myMap() {
-                var myCenter = new google.maps.LatLng(52.3815268, 4.63865060000001);
+                // var myCenter = new google.maps.LatLng(52.3815268, 4.63865060000001);
+                var myCenter = new google.maps.LatLng(@Model.locatie.Breedte, @Model.locatie.Lengte);
                 var mapCanvas = document.getElementById("map");
                 var mapOptions = { center: myCenter, zoom: 12 };
                 var map = new google.maps.Map(mapCanvas, mapOptions);
@@ -44,7 +45,7 @@
                 marker.setMap(map);
 
                 var infowindow = new google.maps.InfoWindow({
-                    content: "Philharmonie"
+                    content: "@Model.locatie.Locatie_Naam"
                 });
                 infowindow.open(map, marker);
             }
